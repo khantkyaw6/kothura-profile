@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import 'tailwindcss';
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--text-color: rgb(255, 255, 255);
+	--text-color-second: rgba(255, 255, 255, 0.754);
+	--text-header: 3.9375rem;
+	--text-color-third: rgb(11, 0, 23);
+	--para-text-color: rgb(247, 235, 255);
+	--btn-text-color: rgb(61, 33, 0);
+}
+
+@theme {
+	/* --color-primary: red; */
+}
+
+.roboto-condensed-bold {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 700;
+	line-height: 120%;
+	font-style: normal;
+}
+
+.roboto-light-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.roboto-normal-regular {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.zilla-slab-regular {
+	font-family: 'Zilla Slab', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.zilla-slab-thin {
+	font-family: 'Zilla Slab', serif;
+	font-weight: 200;
+	font-style: normal;
+}
+
+.source-sans-3-regular {
+	font-family: 'Source Sans 3', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.bree-serif-bold {
+	font-family: 'Bree Serif', serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.bree-serif-regular {
+	font-family: 'Bree Serif', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.title-h2 {
+}
+
+/* Button BG Color Code */
+
+.btn-grad {
+	background-image: linear-gradient(
+		to right,
+		#ff8008 0%,
+		#ffc837 51%,
+		#ff8008 100%
+	);
+}
+.btn-grad {
+	margin: 10px;
+	padding: 10px 20px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	display: block;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Button BG Color Code End */
