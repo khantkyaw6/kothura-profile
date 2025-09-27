@@ -1,28 +1,68 @@
 import LayoutWrapper from './components/common/LayoutWrapper';
-import FifthSection from './components/sections/fifth-section';
-import FirstSection from './components/sections/first-section';
-import FourthSection from './components/sections/fourth-section';
-import SecondSection from './components/sections/second-section';
-import ThirdSection from './components/sections/third-section';
+import { createBrowserRouter } from 'react-router';
+import YoungMillionaire from './pages/young-millionaire';
+import HelmetWrapper from './components/common/HelmetWrapper';
+import Consultation from './pages/consultation';
+import YoungBoss from './pages/young-boss';
+import Home from './pages/home';
 
-function App() {
-	return (
-		<LayoutWrapper>
-			<FirstSection />
-			<SecondSection />
-			<div className='bg-[#FCE9D1] sm:p-14 mt-5 '>
-				<h1 className='p-5 text-xl md:text-5xl text-center text-(--btn-text-color) bree-serif-bold '>
-					<span>
-						Let Me Explain What Business Really Is..? <br /> (In
-						Simple Words)
-					</span>
-				</h1>
-			</div>
-			<ThirdSection />
-			<FourthSection />
-			<FifthSection />
-		</LayoutWrapper>
-	);
-}
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <LayoutWrapper className={'bg-white'} />,
+		children: [
+			{
+				index: true,
+				element: (
+					<HelmetWrapper title='Home'>
+						<Home />
+					</HelmetWrapper>
+				),
+			},
+			{
+				path: 'youngboss',
+				element: (
+					<HelmetWrapper
+						title='Young Boss Program'
+						description='Empower young minds with the Young Boss Program, designed to cultivate leadership and business skills from an early age.'
+						content='Young Boss Program, Leadership, Business Skills'
+					>
+						<YoungBoss />
+					</HelmetWrapper>
+				),
+			},
+		],
+	},
+	{
+		path: '/',
+		element: <LayoutWrapper className={'bg-black'} />,
+		children: [
+			{
+				path: 'youngmillionaire',
+				element: (
+					<HelmetWrapper
+						title='Young Millionaire Program'
+						description='Join the Young Millionaire Program to learn the secrets of business and entrepreneurship from a young age.'
+						content='Young Millionaire Program, Business, Entrepreneurship, Financial Education'
+					>
+						<YoungMillionaire />
+					</HelmetWrapper>
+				),
+			},
+			{
+				path: 'consultation',
+				element: (
+					<HelmetWrapper
+						title="Ko Thura's Consultation"
+						description='Get expert business consultation from Ko Thura, a successful entrepreneur and mentor.'
+						content='Business Consultation, Entrepreneurship, Mentorship'
+					>
+						<Consultation />
+					</HelmetWrapper>
+				),
+			},
+		],
+	},
+]);
 
-export default App;
+export default router;

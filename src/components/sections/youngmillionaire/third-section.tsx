@@ -1,9 +1,10 @@
-import ProfileImg from '../../assets/profile.avif';
+import ProfileImg from '../../../assets/profile.avif';
+import { handleCheckout } from '../../helper/paypalCheckout';
 
 function ThirdSection() {
 	return (
-		<div className='mb-5 px-[15px]'>
-			<p className='text-(--para-text-color) text-base zilla-slab-regular my-10'>
+		<div className='my-5 px-[15px] md:px-[30px]'>
+			<p className='text-(--para-text-color) text-base md:text-xl zilla-slab-regular my-16'>
 				<span>
 					Business is just this — two people exchanging what they
 					want.
@@ -75,16 +76,19 @@ function ThirdSection() {
 			</p>
 			<hr className='border-gray-700 mb-10' />
 			<div className='px-2.5'>
-				<h1 className='bree-serif-bold text-xl text-(--text-color) text-center'>
+				<h1 className='bree-serif-bold text-xl md:text-5xl md:px-16 text-(--text-color) text-center'>
 					<span>
 						“Everyone Wants to Get Rich. But Very Few Understand
 						What Money Truly Is.”
 					</span>
 				</h1>
-				<div className='py-5'>
-					<button className='btn-grad flex flex-col'>
+				<div className='py-5 flex justify-center'>
+					<button
+						className='btn-grad flex flex-col md:w-[70%] md:h-20  md:px-8 md:py-4'
+						onClick={handleCheckout}
+					>
 						<a>
-							<span className='text-(--btn-text-color) text-2xl roboto-condensed-bold'>
+							<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
 								Join Now for $97 – Limited Until September 1st
 							</span>
 						</a>
@@ -93,21 +97,22 @@ function ThirdSection() {
 			</div>
 			<hr className='border-gray-700 mb-10' />
 			<div className='text-center '>
-				<h1 className='text-2xl bree-serif-bold text-(--text-color)'>
+				<h1 className='text-2xl md:text-6xl bree-serif-bold text-(--text-color)'>
 					<span>Meet The Founder, Kyaw Thura</span>
 				</h1>
-				<h1 className='zilla-slab-regular text-base  text-(--text-color)'>
+				<h1 className='zilla-slab-regular text-base md:text-4xl mt-2  text-(--text-color)'>
 					<span>Over 10 Years in The Industry</span>
 				</h1>
 				<div className='mt-4 flex justify-center'>
 					<img
-						className='w-36 h-36 rounded-xl object-cover'
+						className='w-36 h-36 md:w-48 md:h-48 rounded-xl object-cover'
 						src={ProfileImg}
 					/>
 				</div>
 			</div>
-			<div className='py-2.5 px-10'>
-				<p className='text-(--para-text-color) text-base zilla-slab-regular my-10'>
+			{/* <div className='py-2.5 px-10'> */}
+			<div className='mt-20 mb-5 mx-auto max-w-2xl px-4 md:mt-40'>
+				<p className='text-(--para-text-color) text-base zilla-slab-regular md:text-xl'>
 					<span>
 						Hi, I’m Ko Thura.
 						<br /> <br />
@@ -168,7 +173,7 @@ function ThirdSection() {
 					</span>
 				</p>
 			</div>
-			<hr className='border-gray-700 mb-10' />
+			{/* <hr className='border-gray-700 mb-10' /> */}
 		</div>
 	);
 }

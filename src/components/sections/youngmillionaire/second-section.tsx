@@ -1,4 +1,4 @@
-import globeWithMoney from '../../assets/icons/globe_with_money.jpg';
+import globeWithMoney from '../../../assets/icons/globe_with_money.jpg';
 
 interface AdvertiseCardProps {
 	title: string;

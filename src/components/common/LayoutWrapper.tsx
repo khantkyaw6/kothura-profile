@@ -1,10 +1,16 @@
-import type { ReactNode } from 'react';
+import { Outlet } from 'react-router';
+import { cn } from '../../lib/cn';
+interface LayoutWrapperProps {
+	className?: string;
+}
 
-function LayoutWrapper({ children }: { children: ReactNode }) {
+function LayoutWrapper({ className }: LayoutWrapperProps) {
 	return (
-		<div className='bg-black py-3'>
+		<div className={cn('py-3', className)}>
 			<div className=' md:container mx-auto'>
-				<div className='flex flex-col gap-4'>{children}</div>
+				<div className='flex flex-col gap-4'>
+					<Outlet />
+				</div>
 			</div>
 		</div>
 	);

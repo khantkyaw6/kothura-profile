@@ -10,11 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-brands-svg-icons": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
     "@paypal/react-paypal-js": "^8.9.1",
     "@tailwindcss/vite": "^4.1.13",
+    "@types/react-helmet": "^6.1.11",
     "axios": "^1.12.2",
+    "clsx": "^2.1.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-helmet": "^6.1.0",
+    "react-router": "^7.9.1",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {

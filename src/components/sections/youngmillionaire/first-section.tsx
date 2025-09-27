@@ -1,4 +1,4 @@
-import { handleCheckout } from '../helper/paypalCheckout';
+import { handleCheckout } from '../../helper/paypalCheckout';
 
 function FirstSection() {
 	return (
@@ -32,9 +32,8 @@ function FirstSection() {
 						></iframe>
 					</div>
 				</div>
-				{/* <div className='mt-20 mb-5 '> */}
 				<div className='mt-20 mb-5 mx-auto max-w-2xl px-4 md:mt-40'>
-					<p className='text-(--para-text-color) text-base zilla-slab-regular md:text-2xl'>
+					<p className='text-(--para-text-color) text-base zilla-slab-regular md:text-xl'>
 						<span>
 							Hey there,
 							<br />
@@ -111,7 +110,7 @@ function FirstSection() {
 					</p>
 					<div className='py-5 flex justify-center'>
 						<button
-							className='btn-grad flex flex-col md:w-full  md:px-8 md:py-4'
+							className='btn-grad flex flex-col md:w-full  md:px-8 md:py-4 md:h-20'
 							onClick={handleCheckout}
 						>
 							<a>
