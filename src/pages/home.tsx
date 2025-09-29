@@ -25,22 +25,22 @@ function Home() {
 
 					<nav className='hidden md:flex items-center gap-8'>
 						<a
-							href='#'
+							href='/youngboss'
 							className='text-gray-600 hover:text-gray-900 transition'
 						>
-							Shop
+							Young Boss
 						</a>
 						<a
-							href='#'
+							href='/consultation'
 							className='text-gray-600 hover:text-gray-900 transition'
 						>
-							Blogs
+							Consultation
 						</a>
 						<a
-							href='#'
+							href='/youngmillionaire'
 							className='text-gray-600 hover:text-gray-900 transition'
 						>
-							About Us
+							Young Millionaire
 						</a>
 
 						{/* Sign In button */}
@@ -57,8 +57,8 @@ function Home() {
 							className='flex flex-col justify-between w-6 h-5 z-50 relative'
 						>
 							<span
-								className={`block h-0.5 bg-black transition-transform duration-300 ${
-									isOpen ? 'rotate-45 translate-y-2' : ''
+								className={`block h-0.5 bg-black transition-transform duration-300 origin-center ${
+									isOpen ? 'rotate-45 translate-y-1.5' : ''
 								}`}
 							></span>
 							<span
@@ -67,8 +67,8 @@ function Home() {
 								}`}
 							></span>
 							<span
-								className={`block h-0.5 bg-black transition-transform duration-300 ${
-									isOpen ? '-rotate-45 -translate-y-2' : ''
+								className={`block h-0.5 bg-black transition-transform duration-300 origin-center ${
+									isOpen ? '-rotate-45 -translate-y-3' : ''
 								}`}
 							></span>
 						</button>
@@ -77,18 +77,11 @@ function Home() {
 
 				{/* Fullscreen Mobile Menu */}
 				<div
-					className={`fixed inset-0 bg-white transform transition-transform duration-300 z-40 ${
+					className={`fixed inset-0 bg-white  transform transition-transform duration-300 z-40 ${
 						isOpen ? 'translate-x-0' : '-translate-x-full'
 					}`}
 				>
-					<nav className='p-6 flex flex-col gap-6 text-lg'>
-						<a
-							href='/'
-							onClick={() => setIsOpen(false)}
-							className='hover:text-blue-600'
-						>
-							Home
-						</a>
+					<nav className='p-6 flex flex-col gap-6 text-lg mt-5'>
 						<a
 							href='/youngboss'
 							onClick={() => setIsOpen(false)}
@@ -104,18 +97,11 @@ function Home() {
 							Consultation
 						</a>
 						<a
-							href='/blogs'
+							href='/youngmillionaire'
 							onClick={() => setIsOpen(false)}
 							className='hover:text-blue-600'
 						>
-							Blogs
-						</a>
-						<a
-							href='/about'
-							onClick={() => setIsOpen(false)}
-							className='hover:text-blue-600'
-						>
-							About Us
+							Young Millionaire
 						</a>
 						<button
 							onClick={() => setIsOpen(false)}
