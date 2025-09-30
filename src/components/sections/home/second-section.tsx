@@ -85,7 +85,7 @@ function SecondSection() {
 					<div className='p-4 text-center'>
 						<a
 							target='_blank'
-							href='youtube.com/@KoThuraMOE/'
+							href='https://www.youtube.com/@MOEMyanmarOnlineEntrepreneur'
 							className='hover:cursor-pointer'
 						>
 							<FontAwesomeIcon
