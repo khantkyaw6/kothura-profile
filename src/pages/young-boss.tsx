@@ -2,10 +2,12 @@ import YoungBossPlayBook from '../assets/youngboss_playbook.webp';
 import YoungBossEvent from '../assets/youngboss_event.avif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faSquareCheck } from '@fortawesome/free-solid-svg-icons';
+import Navbar from '../components/common/Navbar';
 
 function YoungBoss() {
 	return (
 		<div className='bg-white '>
+			<Navbar />
 			<div className='px-8 mt-5'>
 				<h1 className='text-(--text-youngboss) font-extrabold poppins-regular text-2xl md:text-6xl text-center leading-relaxed'>
 					<span>
