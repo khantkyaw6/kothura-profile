@@ -2,11 +2,12 @@ import KoThuraLogo from '../../assets/ko_thura_logo.avif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { useLocation } from 'react-router'; // 👈 make sure this is from react-router-dom
+import { useLocation, useNavigate } from 'react-router'; // 👈 make sure this is from react-router-dom
 
 function Navbar({ theme = 'light' }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const isDark = theme === 'dark';
 	const textColor = isDark ? 'text-white' : 'text-gray-600';
@@ -26,12 +27,16 @@ function Navbar({ theme = 'light' }) {
 				<div>
 					<img
 						src={KoThuraLogo}
+						onClick={() => navigate('/')}
 						alt="Ko Thura's Logo"
-						className='w-28 md:w-36'
+						className='w-28 md:w-36 hover:cursor-pointer'
 					/>
 				</div>
 
 				<nav className='hidden md:flex items-center gap-8'>
+					<a href='/' className={linkClasses('/')}>
+						Home
+					</a>
 					<a href='/youngboss' className={linkClasses('/youngboss')}>
 						Young Boss
 					</a>
@@ -88,6 +93,13 @@ function Navbar({ theme = 'light' }) {
 				}`}
 			>
 				<nav className='p-6 flex flex-col gap-6 text-lg mt-5'>
+					<a
+						href='/'
+						onClick={() => setIsOpen(false)}
+						className={linkClasses('/')}
+					>
+						Home
+					</a>
 					<a
 						href='/youngboss'
 						onClick={() => setIsOpen(false)}
