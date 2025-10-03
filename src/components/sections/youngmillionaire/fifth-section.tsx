@@ -4,6 +4,7 @@ import ShowThree from '../../../assets/show_three.avif';
 import ShowFour from '../../../assets/show_four.avif';
 import ShowFive from '../../../assets/show_five.avif';
 import ShowSix from '../../../assets/show_six.avif';
+import { handleCheckout } from '../../helper/paypalCheckout';
 
 function FifthSection() {
 	return (
@@ -110,7 +111,10 @@ function FifthSection() {
 					</p>
 				</div>
 				<div className='pb-10 flex justify-center'>
-					<button className='btn-grad flex flex-col md:w-[80%]  md:px-8 md:py-4 md:h-20'>
+					<button
+						className='btn-grad flex flex-col md:w-[80%]  md:px-8 md:py-4 md:h-20'
+						onClick={handleCheckout}
+					>
 						<a>
 							<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
 								Join Young Millionaire Program for $97

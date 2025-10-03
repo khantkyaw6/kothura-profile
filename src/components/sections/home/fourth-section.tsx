@@ -1,5 +1,6 @@
 import YoungBossProgram from '../../../assets/kothura_youngboss_program.avif';
 import KoThuraLogo from '../../../assets/ko_thura_logo.avif';
+import { handleCheckout } from '../../helper/paypalCheckout';
 
 function FourthSection() {
 	return (
@@ -31,6 +32,7 @@ function FourthSection() {
 						</div>
 						<div className='text-center md:my-5'>
 							<button
+								onClick={handleCheckout}
 								type='submit'
 								className='bg-amber-500 text-white p-3 rounded-4xl w-[90%]'
 							>

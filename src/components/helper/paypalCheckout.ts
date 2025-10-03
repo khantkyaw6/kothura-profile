@@ -2,8 +2,11 @@ import axios from 'axios';
 
 export async function handleCheckout() {
 	try {
+		console.log('In paypal checkout');
 		// Optional: you can return a loading state from the caller if needed
-		const { data } = await axios.post('https://paypal-server-yujz.onrender.com/create-order');
+		const { data } = await axios.post(
+			'https://paypal-server-yujz.onrender.com/create-order'
+		);
 		const orderId = data.id;
 
 		// Redirect to PayPal approval

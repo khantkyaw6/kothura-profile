@@ -1,4 +1,5 @@
 import HomePageOne from '../../../assets/home_one.webp';
+import { handleCheckout } from '../../helper/paypalCheckout';
 
 function FirstSection() {
 	return (
@@ -35,6 +36,7 @@ function FirstSection() {
 						and leadership lessons to the next generation.
 					</p>
 					<button
+						onClick={handleCheckout}
 						type='submit'
 						className='bg-amber-500 mt-4 md:mt-8 text-white px-6 py-3 rounded-2xl text-base md:text-2xl hover:cursor-pointer'
 					>
