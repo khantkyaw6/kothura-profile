@@ -1,7 +1,20 @@
+import { useState } from 'react';
 import ProfileImg from '../../../assets/profile.avif';
 import { handleCheckout } from '../../helper/paypalCheckout';
+import Spinner from '../../common/Spinner';
 
 function ThirdSection() {
+	const [loading, setLoading] = useState(false);
+
+	const onCheckout = async () => {
+		setLoading(true);
+		try {
+			await handleCheckout(); // redirects if successful
+		} catch (error) {
+			console.error(error);
+			setLoading(false); // reset only on error
+		}
+	};
 	return (
 		<div className='my-5 px-[15px] md:px-[30px]'>
 			<p className='text-(--para-text-color) text-base md:text-xl zilla-slab-regular my-16'>
@@ -84,14 +97,24 @@ function ThirdSection() {
 				</h1>
 				<div className='py-5 flex justify-center'>
 					<button
-						className='btn-grad flex flex-col md:w-[70%] md:h-20  md:px-8 md:py-4'
-						onClick={handleCheckout}
+						onClick={onCheckout}
+						disabled={loading}
+						className={`btn-grad flex flex-col md:w-[70%] md:h-20 md:px-8 md:py-4 items-center justify-center transition ${
+							loading ? 'opacity-80 cursor-not-allowed' : ''
+						}`}
 					>
-						<a>
+						{loading ? (
+							<div className='flex items-center justify-center gap-3'>
+								<Spinner />
+								<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
+									Processing...
+								</span>
+							</div>
+						) : (
 							<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
 								Join Now for $97 – Limited Until September 1st
 							</span>
-						</a>
+						)}
 					</button>
 				</div>
 			</div>

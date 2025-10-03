@@ -5,8 +5,21 @@ import ShowFour from '../../../assets/show_four.avif';
 import ShowFive from '../../../assets/show_five.avif';
 import ShowSix from '../../../assets/show_six.avif';
 import { handleCheckout } from '../../helper/paypalCheckout';
+import { useState } from 'react';
+import Spinner from '../../common/Spinner';
 
 function FifthSection() {
+	const [loading, setLoading] = useState(false);
+
+	const onCheckout = async () => {
+		setLoading(true);
+		try {
+			await handleCheckout(); // redirects if successful
+		} catch (error) {
+			console.error(error);
+			setLoading(false); // reset on error
+		}
+	};
 	return (
 		<div className='mb-5 px-[15px] mt-20'>
 			<div className='text-center grid gap-5'>
@@ -112,18 +125,30 @@ function FifthSection() {
 				</div>
 				<div className='pb-10 flex justify-center'>
 					<button
-						className='btn-grad flex flex-col md:w-[80%]  md:px-8 md:py-4 md:h-20'
-						onClick={handleCheckout}
+						onClick={onCheckout}
+						disabled={loading}
+						className={`btn-grad flex flex-col md:w-[80%] md:px-8 md:py-4 md:h-20 items-center justify-center transition ${
+							loading ? 'opacity-80 cursor-not-allowed' : ''
+						}`}
 					>
-						<a>
-							<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
-								Join Young Millionaire Program for $97
-							</span>
-							<br />
-							<span className='text-(--btn-text-color) text-xs font-extralight md:text-base'>
-								Before It Goes Back to $200 on September 1st
-							</span>
-						</a>
+						{loading ? (
+							<div className='flex items-center justify-center gap-3'>
+								<Spinner />
+								<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
+									Processing...
+								</span>
+							</div>
+						) : (
+							<>
+								<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
+									Join Young Millionaire Program for $97
+								</span>
+								<br />
+								<span className='text-(--btn-text-color) text-xs font-extralight md:text-base'>
+									Before It Goes Back to $200 on September 1st
+								</span>
+							</>
+						)}
 					</button>
 				</div>
 			</div>

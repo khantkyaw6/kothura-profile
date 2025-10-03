@@ -1,7 +1,21 @@
+import { useState } from 'react';
 import HomePageOne from '../../../assets/home_one.webp';
 import { handleCheckout } from '../../helper/paypalCheckout';
+import Spinner from '../../common/Spinner';
 
 function FirstSection() {
+	const [loading, setLoading] = useState(false);
+
+	const onCheckout = async () => {
+		setLoading(true);
+		try {
+			await handleCheckout(); // redirects if successful
+		} catch (error) {
+			console.error(error);
+			setLoading(false); // reset on error only
+		}
+	};
+
 	return (
 		<div className='md:mt-10'>
 			<div className='text-center'>
@@ -11,7 +25,7 @@ function FirstSection() {
 				<h1 className='mt-2 poppins-regular text-3xl md:text-6xl font-extrabold'>
 					<span>"School Teaches Math… But Who Teaches Money?"</span>
 				</h1>
-				<h2 className='text-[12px] md:text-lg  poppins-regular mt-2 font-semibold'>
+				<h2 className='text-[12px] md:text-lg poppins-regular mt-2 font-semibold'>
 					<span>
 						"Fun, easy lessons that show kids (ages 8–15) how money
 						works, how business is built, and how to think like a
@@ -33,14 +47,26 @@ function FirstSection() {
 						"Hi, I’m Ko Thura – business coach and consultant with
 						9+ years of experience helping entrepreneurs grow their
 						profits. Now, I’m bringing my proven business, sales,
-						and leadership lessons to the next generation.
+						and leadership lessons to the next generation."
 					</p>
 					<button
-						onClick={handleCheckout}
+						onClick={onCheckout}
+						disabled={loading}
 						type='submit'
-						className='bg-amber-500 mt-4 md:mt-8 text-white px-6 py-3 rounded-2xl text-base md:text-2xl hover:cursor-pointer'
+						className={`bg-amber-500 mt-4 md:mt-8 text-white px-6 py-3 rounded-2xl text-base md:text-2xl hover:cursor-pointer flex items-center justify-center transition w-full ${
+							loading ? 'opacity-80 cursor-not-allowed' : ''
+						}`}
 					>
-						YES! I Want My Child to Join Young Millionaire
+						{loading ? (
+							<div className='flex items-center justify-center gap-3'>
+								<Spinner />
+								<span className='text-white font-bold text-lg md:text-xl'>
+									Processing...
+								</span>
+							</div>
+						) : (
+							'YES! I Want My Child to Join Young Millionaire'
+						)}
 					</button>
 				</div>
 			</div>

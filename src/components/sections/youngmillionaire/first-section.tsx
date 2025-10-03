@@ -1,6 +1,19 @@
+import { useState } from 'react';
 import { handleCheckout } from '../../helper/paypalCheckout';
+import Spinner from '../../common/Spinner';
 
 function FirstSection() {
+	const [loading, setLoading] = useState(false);
+
+	const onCheckout = async () => {
+		setLoading(true);
+		try {
+			await handleCheckout(); // redirects if successful
+		} catch (error) {
+			console.error(error);
+			setLoading(false); // reset on error
+		}
+	};
 	return (
 		<>
 			<div className='mt-[20px] pb-0.5'>
@@ -110,18 +123,30 @@ function FirstSection() {
 					</p>
 					<div className='py-5 flex justify-center'>
 						<button
-							className='btn-grad flex flex-col md:w-full  md:px-8 md:py-4 md:h-20'
-							onClick={handleCheckout}
+							onClick={onCheckout}
+							disabled={loading}
+							className={`btn-grad flex flex-col md:w-full md:px-8 md:py-4 md:h-20 items-center justify-center transition ${
+								loading ? 'opacity-80 cursor-not-allowed' : ''
+							}`}
 						>
-							<a>
-								<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
-									Join Young Millionaire Program
-								</span>
-								<br />
-								<span className='text-(--btn-text-color) text-xs md:text-base font-extralight capitalize'>
-									Pre Roll for $97
-								</span>
-							</a>
+							{loading ? (
+								<div className='flex items-center justify-center gap-3'>
+									<Spinner />
+									<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
+										Processing...
+									</span>
+								</div>
+							) : (
+								<>
+									<span className='text-(--btn-text-color) text-xl md:text-3xl roboto-condensed-bold'>
+										Join Young Millionaire Program
+									</span>
+									<br />
+									<span className='text-(--btn-text-color) text-xs md:text-base font-extralight capitalize'>
+										Pre Roll for $97
+									</span>
+								</>
+							)}
 						</button>
 					</div>
 				</div>

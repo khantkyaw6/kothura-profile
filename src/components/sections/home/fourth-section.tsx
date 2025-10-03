@@ -1,8 +1,22 @@
+import { useState } from 'react';
 import YoungBossProgram from '../../../assets/kothura_youngboss_program.avif';
 import KoThuraLogo from '../../../assets/ko_thura_logo.avif';
 import { handleCheckout } from '../../helper/paypalCheckout';
+import Spinner from '../../common/Spinner';
 
 function FourthSection() {
+	const [loading, setLoading] = useState(false);
+
+	const onCheckout = async () => {
+		setLoading(true);
+		try {
+			await handleCheckout(); // redirects if successful
+		} catch (error) {
+			console.error(error);
+			setLoading(false); // reset only on error
+		}
+	};
+
 	return (
 		<div>
 			<div className='bg-black py-6'>
@@ -32,18 +46,33 @@ function FourthSection() {
 						</div>
 						<div className='text-center md:my-5'>
 							<button
-								onClick={handleCheckout}
+								onClick={onCheckout}
+								disabled={loading}
 								type='submit'
-								className='bg-amber-500 text-white p-3 rounded-4xl w-[90%]'
+								className={`bg-amber-500 text-white p-3 rounded-4xl w-[90%] flex items-center justify-center transition ${
+									loading
+										? 'opacity-80 cursor-not-allowed'
+										: ''
+								}`}
 							>
-								<span className='text-xl md:text-3xl'>
-									YES! I’M READY TO GET STARTED FOR $5
-								</span>
+								{loading ? (
+									<div className='flex items-center justify-center gap-3'>
+										<Spinner />
+										<span className='font-bold text-base md:text-2xl'>
+											Processing...
+										</span>
+									</div>
+								) : (
+									<span className='text-xl md:text-3xl'>
+										YES! I’M READY TO GET STARTED FOR $5
+									</span>
+								)}
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<div className='bg-gray-500 md:mt-20 shadow-lg py-5 text-white grid grid-cols-1 md:grid-cols-3 gap-4 mt-5'>
 				<div className='p-4 text-center'>
 					<div className='flex justify-center'>
