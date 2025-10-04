@@ -8,7 +8,10 @@ function FirstSection() {
 
 	useEffect(() => {
 		console.log('in use effect');
-		setLoading(false);
+		// setLoading(false);
+		const handleFocus = () => setLoading(false);
+		window.addEventListener('focus', handleFocus);
+		return () => window.removeEventListener('focus', handleFocus);
 	}, []);
 
 	const onCheckout = async () => {
