@@ -12,7 +12,11 @@ function FifthSection() {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		setLoading(false);
+		console.log('in use effect');
+		// setLoading(false);
+		const handleFocus = () => setLoading(false);
+		window.addEventListener('focus', handleFocus);
+		return () => window.removeEventListener('focus', handleFocus);
 	}, []);
 
 	const onCheckout = async () => {
