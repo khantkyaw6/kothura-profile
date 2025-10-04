@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { handleCheckout } from '../../helper/paypalCheckout';
 import Spinner from '../../common/Spinner';
 
 function FirstSection() {
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(false);
+	}, []);
 
 	const onCheckout = async () => {
 		setLoading(true);
@@ -126,7 +130,9 @@ function FirstSection() {
 							onClick={onCheckout}
 							disabled={loading}
 							className={`btn-grad flex flex-col md:w-full md:px-8 md:py-4 md:h-20 items-center justify-center transition ${
-								loading ? 'opacity-80 cursor-not-allowed' : ''
+								loading
+									? 'opacity-80 cursor-not-allowed'
+									: 'cursor-pointer'
 							}`}
 						>
 							{loading ? (

@@ -1,9 +1,13 @@
-import { useState } from 'react';
 import { handleCheckout } from '../../helper/paypalCheckout';
 import Spinner from '../../common/Spinner';
+import { useState, useEffect } from 'react';
 
 function ThirdSection() {
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(false);
+	}, []);
 
 	const onCheckout = async () => {
 		setLoading(true);
@@ -55,7 +59,9 @@ function ThirdSection() {
 					onClick={onCheckout}
 					disabled={loading}
 					className={`relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all md:w-[60%] bg-[#FFD700] rounded-xl group ${
-						loading ? 'opacity-70 cursor-not-allowed' : ''
+						loading
+							? 'opacity-70 cursor-not-allowed'
+							: 'cursor-pointer'
 					}`}
 				>
 					{loading ? (

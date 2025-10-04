@@ -5,11 +5,15 @@ import ShowFour from '../../../assets/show_four.avif';
 import ShowFive from '../../../assets/show_five.avif';
 import ShowSix from '../../../assets/show_six.avif';
 import { handleCheckout } from '../../helper/paypalCheckout';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Spinner from '../../common/Spinner';
 
 function FifthSection() {
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(false);
+	}, []);
 
 	const onCheckout = async () => {
 		setLoading(true);
@@ -128,7 +132,9 @@ function FifthSection() {
 						onClick={onCheckout}
 						disabled={loading}
 						className={`btn-grad flex flex-col md:w-[80%] md:px-8 md:py-4 md:h-20 items-center justify-center transition ${
-							loading ? 'opacity-80 cursor-not-allowed' : ''
+							loading
+								? 'opacity-80 cursor-not-allowed'
+								: 'cursor-pointer'
 						}`}
 					>
 						{loading ? (

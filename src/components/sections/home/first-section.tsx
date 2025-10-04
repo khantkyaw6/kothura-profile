@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HomePageOne from '../../../assets/home_one.webp';
 import { handleCheckout } from '../../helper/paypalCheckout';
 import Spinner from '../../common/Spinner';
 
 function FirstSection() {
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(false);
+	}, []);
 
 	const onCheckout = async () => {
 		setLoading(true);
@@ -54,7 +58,9 @@ function FirstSection() {
 						disabled={loading}
 						type='submit'
 						className={`bg-amber-500 mt-4 md:mt-8 text-white px-6 py-3 rounded-2xl text-base md:text-2xl hover:cursor-pointer flex items-center justify-center transition w-full ${
-							loading ? 'opacity-80 cursor-not-allowed' : ''
+							loading
+								? 'opacity-80 cursor-not-allowed'
+								: 'cursor-pointer'
 						}`}
 					>
 						{loading ? (

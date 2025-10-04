@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import YoungBossProgram from '../../../assets/kothura_youngboss_program.avif';
 import KoThuraLogo from '../../../assets/ko_thura_logo.avif';
 import { handleCheckout } from '../../helper/paypalCheckout';
@@ -6,6 +6,10 @@ import Spinner from '../../common/Spinner';
 
 function FourthSection() {
 	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(false);
+	}, []);
 
 	const onCheckout = async () => {
 		setLoading(true);
@@ -52,7 +56,7 @@ function FourthSection() {
 								className={`bg-amber-500 text-white p-3 rounded-4xl w-[90%] flex items-center justify-center transition ${
 									loading
 										? 'opacity-80 cursor-not-allowed'
-										: ''
+										: 'cursor-pointer'
 								}`}
 							>
 								{loading ? (
