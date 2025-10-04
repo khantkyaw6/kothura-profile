@@ -7,6 +7,7 @@ function FirstSection() {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
+		console.log('in use effect');
 		setLoading(false);
 	}, []);
 
