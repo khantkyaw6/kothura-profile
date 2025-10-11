@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import HomePageOne from '../../../assets/home_one.webp';
-import { handleCheckout } from '../../helper/paypalCheckout';
+// import { handleCheckout } from '../../helper/paypalCheckout';
+import { handleStripeCheckout } from '../../helper/stripeCheckout';
 import Spinner from '../../common/Spinner';
 
 function FirstSection() {
@@ -14,10 +15,21 @@ function FirstSection() {
 		return () => window.removeEventListener('focus', handleFocus);
 	}, []);
 
-	const onCheckout = async () => {
+	// const onCheckout = async () => {
+	// 	setLoading(true);
+	// 	try {
+	// 		await handleCheckout(); // redirects if successful
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 		setLoading(false); // reset on error only
+	// 	}
+	// };
+
+	const onStripeCheckout = async () => {
 		setLoading(true);
+		console.log("In stripe checkout")
 		try {
-			await handleCheckout(); // redirects if successful
+			await handleStripeCheckout();
 		} catch (error) {
 			console.error(error);
 			setLoading(false); // reset on error only
@@ -58,7 +70,8 @@ function FirstSection() {
 						and leadership lessons to the next generation."
 					</p>
 					<button
-						onClick={onCheckout}
+						// onClick={onCheckout}
+						onClick={onStripeCheckout}
 						disabled={loading}
 						type='submit'
 						className={`bg-amber-500 mt-4 md:mt-8 text-white px-6 py-3 rounded-2xl text-base md:text-2xl hover:cursor-pointer flex items-center justify-center transition w-full ${
